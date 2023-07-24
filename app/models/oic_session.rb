@@ -72,6 +72,10 @@ class OicSession < ActiveRecord::Base
     )
   end
 
+  def self.dont_change_group?
+    client_config['dont_change_group']
+  end
+
   def get_access_token!
     response = self.class.get_token(access_token_query)
     if response["error"].blank?
